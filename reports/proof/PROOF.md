@@ -23,7 +23,7 @@ This document catalogs each required proof deliverable, its location within the 
 | **Residual Diagnostics Suite** | `reports/figures/07_residual_diagnostics.png` | **VERIFIED** | Inspect standardized residuals, histogram/KDE, normal Q-Q plot, and residual ACF (150 DPI) |
 | **30-Day Forecast Projections** | `reports/figures/08_30_day_forecast_projections.png` | **VERIFIED** | Inspect historical series + 30-day July projections with 95% confidence band (150 DPI) |
 | **Environment Specifications** | `reports/proof/environment.txt` | **VERIFIED** | `pip freeze` pinned packages matching `requirements.txt` |
-| **CI Automation Workflow** | `.github/workflows/ci.yml` | **PENDING** | GitHub Actions CI workflow execution on `main` push |
+| **CI Automation Workflow** | `.github/workflows/ci.yml` | **PASSED** (Run ID [41416941335](https://github.com/mohanasanthibattula-stack/time-series-forecasting-arima-prophet/actions/runs/41416941335)) | GitHub Actions CI workflow passed on `main` push (`gh run view 41416941335`) |
 
 ---
 
