@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Execute Time-Series Forecasting Notebook
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute notebook
+        run: |
+          jupyter nbconvert --to notebook --execute --inplace notebooks/time_series_forecasting.ipynb
+
+      - name: Export HTML report
+        run: |
+          jupyter nbconvert --to html notebooks/time_series_forecasting.ipynb --output-dir=reports --output=time_series_forecasting.html
+
+      - name: Verify generated artifacts
+        run: |
+          test -f reports/results_summary.csv || exit 1
+          test -f reports/time_series_forecasting.html || exit 1
+          ls -la reports/figures/
